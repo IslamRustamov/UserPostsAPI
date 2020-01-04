@@ -18,6 +18,8 @@ gem 'oj', '~> 3.10'
 
 gem 'rack-cors', '~> 1.1', '>= 1.1.1'
 
+gem 'rack-attack', '~> 6.2', '>= 6.2.2'
+
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
