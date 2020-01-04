@@ -1,24 +1,11 @@
-# README
+# Yet another API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Simple API where users can post different things
 
-Things you may want to cover:
+TODO: Complete CRUD operations for all controllers, add proper token generation
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## oj
+## serialization
+## jbuilder
+## CORS
+## DDoS protection
