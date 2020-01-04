@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  before_create: { self.token = generate_token }
+  before_create { self.token = generate_token }
   has_many :posts, dependent: :destroy
 
   validates :name, presence: true
@@ -9,7 +9,7 @@ class User < ApplicationRecord
     def generate_token
       loop do
         token = SecureRandom.hex
-        token unless User.exists?({ token: token })
+        return token unless User.exists?({ token: token })
       end
     end
 end

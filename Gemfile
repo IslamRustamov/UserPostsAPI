@@ -14,6 +14,8 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'active_model_serializers', '~> 0.10.10'
 
+gem 'oj', '~> 3.10'
+
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -31,6 +33,7 @@ end
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'faker'
+  gem 'faraday', '~> 1.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
