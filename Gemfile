@@ -16,6 +16,8 @@ gem 'active_model_serializers', '~> 0.10.10'
 
 gem 'oj', '~> 3.10'
 
+gem 'rack-cors', '~> 1.1', '>= 1.1.1'
+
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
