@@ -1,16 +1,14 @@
-class Api::V1::PostsController < ApplicationController
+class Api::V1::PostsController < ApiController
   include ActionController::HttpAuthentication::Token::ControllerMethods
   before_action :authenticate, only: [:create, :destroy, :update]
   before_action :find_post, only: [:update, :destroy]
 
   def index
     @posts = Post.order('created_at DESC')
-    render json: @posts, status: 200
   end
 
   def show
     @post = Post.find(params[:id])
-    render "api/v1/posts/show.json", status: 200
   end
 
   def create

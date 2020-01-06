@@ -33,7 +33,9 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.9'
+  gem 'rails-controller-testing'
   gem 'faker', '~> 2.10'
+  gem 'pry', '~> 0.12.2'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end

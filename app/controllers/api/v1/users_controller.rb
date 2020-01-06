@@ -1,13 +1,11 @@
-class Api::V1::UsersController < ApplicationController
+class Api::V1::UsersController < ApiController
   before_action :find_user, only: [:show, :destroy]
-  
+
   def index
     @users = User.order('created_at DESC')
-    render "api/v1/users/index.json", status: 200
   end
 
   def show
-    render "api/v1/users/show.json", status: 200
   end
 
   def create
