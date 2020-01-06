@@ -26,17 +26,20 @@ gem 'rack-attack', '~> 6.2', '>= 6.2.2'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+group :test do
+  gem 'factory_bot_rails', '~> 5.1', '>= 5.1.1'
+  gem 'shoulda-matchers', '~> 4.1', '>= 4.1.2'
+end
 
 group :development, :test do
+  gem 'rspec', '~> 3.9'
+  gem 'faker', '~> 2.10'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'faker'
   gem 'faraday', '~> 1.0'
 end
 
