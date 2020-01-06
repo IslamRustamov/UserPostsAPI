@@ -1,11 +1,16 @@
 class Api::V1::PostsController < ApplicationController
   include ActionController::HttpAuthentication::Token::ControllerMethods
-  before_action :authenticate, only: [:create, :destroy]
+  before_action :authenticate, only: [:create, :destroy, :update]
+  before_action :find_post, only: [:update, :destroy]
 
   def index
     @posts = Post.order('created_at DESC')
+    render json: @posts, status: 200
+  end
 
-    render json: @posts
+  def show
+    @post = Post.find(params[:id])
+    render "api/v1/posts/show.json", status: 200
   end
 
   def create
@@ -17,12 +22,20 @@ class Api::V1::PostsController < ApplicationController
     end
   end
 
+  def update
+    puts @post
+    if @post.update(post_params)
+      render json: @post, status: 200, location: [:api, @post]
+    else
+      render status: :unprocessable_entity
+    end
+  end
+
   def destroy
-    @post = @user.posts.find_by(params[:id])
     if @post
       @post.destroy
     else
-      render json: {post: "not found"}, status: :not_found
+      render json: { post: "not found" }, status: :not_found
     end
   end
 
@@ -36,5 +49,9 @@ class Api::V1::PostsController < ApplicationController
       authenticate_or_request_with_http_token do |token, options|
         @user = User.find_by(token: token)
       end
+    end
+
+    def find_post
+  	 	@post = @user.posts.find_by(params[:id])
     end
 end
