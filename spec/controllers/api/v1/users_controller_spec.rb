@@ -37,4 +37,31 @@ RSpec.describe Api::V1::UsersController, type: :controller do
       expect(response).to render_template("show")
     end
   end
+  describe "POST #create" do
+    context "when is successfully created" do
+      before do
+        @user_attributes = FactoryBot.attributes_for(:user)
+        post :create, params: { user: @user_attributes }
+      end
+
+      it "returns http success" do
+        expect(response).to have_http_status(:created)
+      end
+
+      it "renders the index template" do
+        expect(response).to render_template("create")
+      end
+    end
+    context "when is unsuccessfully created" do
+      before do
+        @user_attributes = FactoryBot.attributes_for(:user)
+        @user_attributes[:name] = nil
+        post :create, params: { user: @user_attributes }
+      end
+
+      it "returns http success" do
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+    end
+  end
 end
