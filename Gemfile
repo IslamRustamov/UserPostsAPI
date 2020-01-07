@@ -32,7 +32,11 @@ group :test do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.9'
+  gem 'rspec-core', git: 'https://github.com/rspec/rspec-core'
+  gem 'rspec-expectations', git: 'https://github.com/rspec/rspec-expectations'
+  gem 'rspec-mocks', git: 'https://github.com/rspec/rspec-mocks'
+  gem 'rspec-rails', git: 'https://github.com/rspec/rspec-rails'
+  gem 'rspec-support', git: 'https://github.com/rspec/rspec-support'
   gem 'rails-controller-testing'
   gem 'faker', '~> 2.10'
   gem 'pry', '~> 0.12.2'
