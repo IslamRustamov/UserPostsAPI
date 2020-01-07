@@ -1,5 +1,7 @@
 class Api::V1::UsersController < ApiController
-  before_action :find_user, only: [:show, :destroy]
+  include ActionController::HttpAuthentication::Token::ControllerMethods
+  before_action :find_user, only: [:show]
+  before_action :authenticate, only: [:destroy]
 
   def index
     @users = User.order('created_at DESC')
@@ -33,5 +35,11 @@ class Api::V1::UsersController < ApiController
 
     def find_user
   	 	@user = User.find(params[:id])
+    end
+
+    def authenticate
+      authenticate_or_request_with_http_token do |token, options|
+        @user = User.find_by(token: token)
+      end
     end
 end
