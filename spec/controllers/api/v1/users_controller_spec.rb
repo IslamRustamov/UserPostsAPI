@@ -57,6 +57,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
       it { should respond_with :unprocessable_entity }
     end
   end
+  # TODO: this test aint working
   describe "DELETE #destroy" do
     before(:each) do
       @user = FactoryBot.create :user

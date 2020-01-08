@@ -30,7 +30,7 @@ class Api::V1::UsersController < ApiController
   private
 
     def user_params
-      params.require(:user).permit(:name)
+      params.require(:user).permit(:name, :email)
     end
 
     def find_user
