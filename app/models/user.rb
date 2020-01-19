@@ -8,9 +8,6 @@ class User < ApplicationRecord
   private
 
     def generate_token
-      loop do
-        token = SecureRandom.hex
-        return token unless User.exists?({ token: token })
-      end
+      SecureRandom.urlsafe_base64
     end
 end

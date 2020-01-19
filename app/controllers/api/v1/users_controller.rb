@@ -38,8 +38,6 @@ class Api::V1::UsersController < ApiController
     end
 
     def authenticate
-      authenticate_or_request_with_http_token do |token, options|
-        @user = User.find_by(token: token)
-      end
+      @user = User.find_by(token: request.headers['HTTP_AUTHORIZATION'])
     end
 end

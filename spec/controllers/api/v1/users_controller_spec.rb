@@ -57,12 +57,12 @@ RSpec.describe Api::V1::UsersController, type: :controller do
       it { should respond_with :unprocessable_entity }
     end
   end
-  # TODO: this test aint working
+
   describe "DELETE #destroy" do
     before(:each) do
       @user = FactoryBot.create :user
-      @request.env['Authorization'] = @user.token
-      delete :destroy, params: { id: @user.id }, format: :json
+      request.env['HTTP_AUTHORIZATION'] = @user.token
+      delete :destroy, params: { id: @user.id }
     end
 
     it { should respond_with 204 }
