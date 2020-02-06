@@ -1,5 +1,4 @@
 class Api::V1::UsersController < ApiController
-  include ActionController::HttpAuthentication::Token::ControllerMethods
   before_action :find_user, only: [:show]
   before_action :authenticate, only: [:destroy]
 

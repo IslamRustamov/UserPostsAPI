@@ -62,7 +62,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
     before(:each) do
       @user = FactoryBot.create :user
       request.env['HTTP_AUTHORIZATION'] = @user.token
-      delete :destroy, params: { id: @user.id }
+      delete :destroy, params: { id: @user.id }, headers: { HTTP_AUTHORIZATION: @user.token }
     end
 
     it { should respond_with 204 }

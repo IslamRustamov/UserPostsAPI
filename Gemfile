@@ -16,6 +16,8 @@ gem 'active_model_serializers', '~> 0.10.10'
 
 gem 'oj', '~> 3.10'
 
+gem 'kaminari'
+
 gem 'rack-cors', '~> 1.1', '>= 1.1.1'
 
 gem 'rack-attack', '~> 6.2', '>= 6.2.2'

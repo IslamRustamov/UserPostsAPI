@@ -4,7 +4,7 @@ class Api::V1::PostsController < ApiController
   before_action :find_post, only: [:update, :destroy]
 
   def index
-    @posts = Post.order('created_at DESC')
+    @posts = Post.order('created_at DESC').page params[:page]
   end
 
   def show
