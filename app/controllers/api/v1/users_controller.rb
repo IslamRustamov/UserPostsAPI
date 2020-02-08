@@ -1,12 +1,16 @@
 class Api::V1::UsersController < ApiController
-  before_action :find_user, only: [:show]
   before_action :authenticate, only: [:destroy]
 
   def index
-    @users = User.order('created_at DESC')
+    # ActiveRecord solution
+    # @users = User.includes(:posts)
+
+    # Calling method from module
+    @users = User.get_users_and_posts
   end
 
   def show
+    @user = User.get_user(params[:id])
   end
 
   def create
@@ -30,10 +34,6 @@ class Api::V1::UsersController < ApiController
 
     def user_params
       params.require(:user).permit(:name, :email)
-    end
-
-    def find_user
-  	 	@user = User.find(params[:id])
     end
 
     def authenticate
