@@ -2,7 +2,7 @@
 
 Simple API where users can post different things
 
-In this branch I am rewrite ActiveRecord queries with plain SQL
+In this branch I am rewriting ActiveRecord queries with plain SQL
 ## oj
 ## serialization
 ## jbuilder
